@@ -33,7 +33,7 @@ class LinkedList:
             itr = self.head
             while itr.next: # If itr.next has some value, you are not at the end of the linked list. Keep iterating.
                 itr = itr.next
-            itr.next = Node(data, None, itr.prev) # You have reached the last element. The pointer is pointing towards None (end of the linked list)
+            itr.next = Node(data, None, itr) # You have reached the last element. The pointer is pointing towards None (end of the linked list)
 
     def insert_values(self, data_list):
         self.head = None # Removing all the current values 
@@ -78,7 +78,7 @@ class LinkedList:
             itr = self.head
             while itr:
                 if count == index - 1: # When inserting an item into a linked list, you want to target the link that is connecting the previous node of your target insertion point
-                    node = Node(data, itr.next, itr.prev) # itr.next refers to the next node of this newly inserted element
+                    node = Node(data, itr.next, itr) # itr.next refers to the next node of this newly inserted element
                     itr.next = node
                     break
                 itr = itr.next
@@ -95,14 +95,15 @@ class LinkedList:
             return
         # if there is only one element in the linked list
         if self.head.data == data_after:
-            self.head.next = Node(data_to_insert, self.head.next, self.head) # Initializes the new node as the next node in the linked list
+            self.head.next = Node(data_to_insert, self.head.next, None) # Initializes the new node as the next node in the linked list
         else:
             count = 0 
             itr = self.head
-            while itr:
+            while True:
                 if itr.data == data_after:
-                    node = Node(data_to_insert, itr.next, itr.prev) #
+                    node = Node(data_to_insert, itr.next, itr) 
                     itr.next = node
+                    itr.prev = itr
                     break
                 itr = itr.next 
                 count += 1
@@ -143,19 +144,39 @@ class LinkedList:
                 liststr += str(itr.data) + "-->"
                 itr = itr.next
             print(liststr)
-    
+
+    def get_last_node(self):
+        itr = self.head
+        while itr.next: # While there is still a node in the next node, keep iterating because you have not reached the end of the linked list
+            itr = itr.next
+        return itr
+
     def print_backwards(self):
         if self.head is None:
             print("Linked List is empty!")
+            return
         else:
-            itr = self.head
+            itr = self.get_last_node()
             liststr = ""
             while itr:
-                itr = itr.next
-                while True:
-                    liststr += str(itr.prev.data) + "-->"
-                    itr = itr.prev
+                liststr += str(itr.data) + "-->"
+                itr = itr.prev
             print(liststr)
+
+
+   #### My own attempt ##### 
+    # def print_backwards(self):
+    #     if self.head is None:
+    #         print("Linked List is empty!")
+    #     else:
+    #         itr = self.head
+    #         liststr = ""
+    #         while itr:
+    #             itr = itr.next
+    #             while True:
+    #                 liststr += str(itr.prev.data) + "-->"
+    #                 itr = itr.prev
+    #         print(liststr)
             
             
                     
@@ -167,11 +188,10 @@ if __name__ == "__main__":
     ll.print()
     ll.remove_by_value("orange") # remove orange from linked list
     ll.print()
-    ll.remove_by_value("figs")
-    ll.print()
-    ll.print_backwards()
+    ll.print_backwards() # Debugging needed: The print_backwards function is neglecting one element from the linked list
     # ll.remove_by_value("banana")
     # ll.remove_by_value("mango")
     # ll.remove_by_value("apple")
     # ll.remove_by_value("grapes")
     # ll.print()
+
