@@ -1,0 +1,34 @@
+package tutorial;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
+
+public class Dictionary_Exercise {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Map myMap = new HashMap();
+		int counter = 0
+		String string_to_test = "this is a test of how well you can do the task";
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+		
+		for (int j = 0, j < string_to_test.length(), i++) {
+			char letter = string_to_test.charAt(j);
+			temp.add(letter)
+		}
+		
+		for (int i = 0; i < string_to_test.length(); i++) {
+//			char letter = string_to_test.charAt(i);
+			myMap.put(letter, counter);
+			System.out.println(letter);
+			
+			// Add this in as a pair
+			
+			// Add a counter (nested while loop (?))
+			
+		}
+		
+		
+	}
+
+}
