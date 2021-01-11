@@ -45,8 +45,16 @@ with open("nyc_weather.csv", "r") as f:
 # Think about the best data structure that you can use to solve this problem and figure out why you selected that specific data structure.
 
 with open("poem.txt", "r") as f:
+    myDict = {}
+    count = 0
     for line in f:
-        print(line)
+        for word in line.split():
+            if myDict.get(word): 
+                old = int(myDict.get(word))
+                myDict[word] = old+1
+            else:
+                myDict[word] = 1 
 
+    print(myDict)
 
 # The best data structure is hashmaps, because you have to pair the frequency of each word's appearance with the word itself.
