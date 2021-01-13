@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Pomodoro_Timer&apos;" deleteContents="false" description="Delete resource &apos;Pomodoro_Timer&apos;" element1="/Pomodoro_Timer" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1610353887261"/>
+</session>
