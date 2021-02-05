@@ -1,0 +1,23 @@
+import org.joda.time.DateTime;
+
+public class main {
+	DateTime one_cycle = new DateTime();
+	DateTime fall_asleep = new DateTime();
+	
+	
+	one_cycle = one_cycle.hourofDay().setCopy(5);
+	one_cycle = one_cycle.minuteofHour().setCopy(5);
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	public static wakeTime() {
+		
+		
+	}
+		
+		
+	}
+
+}
